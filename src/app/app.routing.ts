@@ -6,6 +6,7 @@ import {
   FullLayoutComponent,
   SimpleLayoutComponent
 } from './containers';
+import {AuthGuardService} from "./services/auth-guard.service";
 
 export const routes: Routes = [
   {
@@ -16,9 +17,7 @@ export const routes: Routes = [
   {
     path: '',
     component: FullLayoutComponent,
-    data: {
-      title: 'Home'
-    },
+    canActivate: [AuthGuardService],
     children: [
       {
         path: 'dashboard',

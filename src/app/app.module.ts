@@ -13,7 +13,7 @@ import {
 const APP_CONTAINERS = [
   FullLayoutComponent,
   SimpleLayoutComponent
-]
+];
 
 // Import components
 import {
@@ -40,7 +40,7 @@ const APP_COMPONENTS = [
   AppSidebarHeaderComponent,
   AppSidebarMinimizerComponent,
   APP_SIDEBAR_NAV
-]
+];
 
 // Import directives
 import {
@@ -55,7 +55,14 @@ const APP_DIRECTIVES = [
   NAV_DROPDOWN_DIRECTIVES,
   ReplaceDirective,
   SIDEBAR_TOGGLE_DIRECTIVES
-]
+];
+
+
+// import services
+const APP_SERVICES = [
+  UserService,
+  AuthGuardService
+];
 
 // Import routing module
 import { AppRoutingModule } from './app.routing';
@@ -64,6 +71,9 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import {UserService} from "./services/user.service";
+import {AuthGuardService} from "./services/auth-guard.service";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -71,7 +81,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
@@ -82,7 +93,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  }, ...APP_SERVICES],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
