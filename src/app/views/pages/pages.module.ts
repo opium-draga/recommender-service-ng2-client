@@ -7,9 +7,11 @@ import {RegisterComponent} from './register.component';
 
 import {PagesRoutingModule} from './pages-routing.module';
 import {FormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   imports: [
+    CommonModule,
     PagesRoutingModule,
     FormsModule
   ],

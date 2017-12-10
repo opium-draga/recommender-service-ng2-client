@@ -61,7 +61,8 @@ const APP_DIRECTIVES = [
 // import services
 const APP_SERVICES = [
   UserService,
-  AuthGuardService
+  AuthGuardService,
+  RequestService
 ];
 
 // Import routing module
@@ -74,10 +75,13 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import {UserService} from "./services/user.service";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {RequestService} from "./services/request";
 
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),

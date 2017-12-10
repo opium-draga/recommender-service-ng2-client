@@ -6,14 +6,16 @@ import {UserService} from "../../services/user.service";
 })
 export class RegisterComponent {
 
-  modal: any = {};
+  modal: any = {
+    name: "Yaroslav",
+    email: "gandgbandg@gmail.com",
+    password: "123qwe"
+  };
 
   constructor(private userService: UserService) {
   }
 
   register() {
-    debugger;
-    this.modal;
 
   }
 
