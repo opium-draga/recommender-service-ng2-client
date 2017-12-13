@@ -18,4 +18,8 @@ export class AppHeaderComponent {
       })
   }
 
+  logout() {
+    this.user.logout();
+  }
+
 }

@@ -12,7 +12,7 @@ export class RequestService {
   constructor(private http: HttpClient) {
     EmitterService.get(EmitterService.keys.TOKEN).subscribe(token => {
       this.headers = new HttpHeaders();
-      this.headers = this.headers.set('Authorization', 'JWT ' + token);
+      this.headers = this.headers.set('Authorization', 'Bearer ' + token);
     })
   }
 
