@@ -8,22 +8,26 @@
             <p class="text-muted">Create your account</p>
             <div class="input-group mb-3">
               <span class="input-group-addon"><i class="icon-user"></i></span>
-              <input [(ngModel)]="modal.name" name="name" type="text" class="form-control" placeholder="Username">
+              <input [(ngModel)]="model.name" name="name" type="text" class="form-control" placeholder="Username">
             </div>
 
             <div class="input-group mb-3">
               <span class="input-group-addon">@</span>
-              <input [(ngModel)]="modal.email" name="email" type="email" required class="form-control" placeholder="Email">
+              <input [(ngModel)]="model.email" name="email" type="email" required class="form-control" placeholder="Email">
             </div>
 
             <div class="input-group mb-3">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
-              <input [(ngModel)]="modal.password" name="password" type="password" required class="form-control" placeholder="Password">
+              <input [(ngModel)]="model.password" name="password" type="password" required class="form-control" placeholder="Password">
             </div>
 
-            <div class="input-group mb-4">
+            <div class="input-group mb-3">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
-              <input [(ngModel)]="modal.password2" name="password2" type="password" required class="form-control" placeholder="Repeat password">
+              <input [(ngModel)]="model.passwordRepeat" name="password2" type="password" required class="form-control" placeholder="Repeat password">
+            </div>
+
+            <div *ngIf="error" class="input-group mb-2">
+              <p style="color: red;">{{error}}</p>
             </div>
 
             <button [disabled]="!registerForm.form.valid"

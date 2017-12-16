@@ -1,22 +1,32 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {UserService} from "../../services/user.service";
+import {APIResponse} from "../../models/response";
+import {Router} from "@angular/router";
 
 @Component({
   templateUrl: 'register.component.html'
 })
 export class RegisterComponent {
 
-  modal: any = {
-    name: "Yaroslav",
-    email: "gandgbandg@gmail.com",
-    password: "123qwe"
+  model: any = {
+    name: "",
+    email: "",
+    password: ""
   };
 
-  constructor(private userService: UserService) {
+  error = "";
+
+  constructor(private userService: UserService,
+              private router: Router) {
   }
 
   register() {
-
+    this.userService.register(this.model).subscribe((response: APIResponse) => {
+      if (response.isSuccess()) {
+        this.router.navigate(['/pages/login']);
+      } else {
+        this.error = response.getError();
+      }
+    })
   }
-
 }
