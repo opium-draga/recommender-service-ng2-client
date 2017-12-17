@@ -63,7 +63,8 @@ const APP_SERVICES = [
   UserService,
   AuthGuardService,
   RequestService,
-  ProjectService
+  ProjectService,
+  UploadService
 ];
 
 // Import routing module
@@ -81,6 +82,8 @@ import {RequestService} from "./services/request";
 import {ProjectService} from "./services/project.service";
 import {NewProjectComponent} from "./components/new-project/new-project.component";
 import {ModalModule} from "ngx-bootstrap";
+import { DataConfigurationComponent } from './components/data-configuration/data-configuration.component';
+import {UploadService} from "./services/upload.service";
 
 @NgModule({
   imports: [
@@ -98,7 +101,8 @@ import {ModalModule} from "ngx-bootstrap";
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
     ...APP_DIRECTIVES,
-    NewProjectComponent
+    NewProjectComponent,
+    DataConfigurationComponent
   ],
   exports: [NewProjectComponent],
   entryComponents: [NewProjectComponent],

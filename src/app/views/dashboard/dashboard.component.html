@@ -1,16 +1,39 @@
 <div class="animated fadeIn">
 
+  <!--<div class="row">-->
+    <!--<div class="col-sm-12">-->
+      <!--<p><b>Configure you project in a few steps</b></p>-->
+    <!--</div>-->
+  <!--</div>-->
+
   <div class="row" *ngIf="projectExist !== undefined && !projectExist">
     <div class="col-sm-12">
       <div class="card card-accent-primary">
         <div class="card-header">
-          Get started with you first project!
+          <b>Get started with you first project!</b>
         </div>
         <div class="card-body">
           <p>To get started with your <b>recommendations</b> first of all create and configure your first project</p>
           <button class="btn btn-outline-success" type="button"
                   (click)="openProjectModal()">
             <i class="fa fa-magic"></i>&nbsp; Create my first project</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card card-accent-primary" [ngClass]="{disabledCard: !projectExist}">
+        <div class="card-header">
+          <b>You don't have any data yet</b>
+        </div>
+
+        <div class="card-body">
+          <p>Provide project with consumer statistic data</p>
+          <button [disabled]="!projectExist" class="btn btn-outline-success" (click)="redirectToDataConf()">
+            <i class="fa fa-magic"></i>&nbsp; Configure data
+          </button>
         </div>
       </div>
     </div>

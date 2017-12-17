@@ -7,6 +7,7 @@ import {
   SimpleLayoutComponent
 } from './containers';
 import {AuthGuardService} from "./services/auth-guard.service";
+import {DataConfigurationComponent} from "./components/data-configuration/data-configuration.component";
 
 export const routes: Routes = [
   {
@@ -24,20 +25,8 @@ export const routes: Routes = [
         loadChildren: './views/dashboard/dashboard.module#DashboardModule'
       },
       {
-        path: 'components',
-        loadChildren: './views/components/components.module#ComponentsModule'
-      },
-      {
-        path: 'icons',
-        loadChildren: './views/icons/icons.module#IconsModule'
-      },
-      {
-        path: 'widgets',
-        loadChildren: './views/widgets/widgets.module#WidgetsModule'
-      },
-      {
-        path: 'charts',
-        loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
+        path: 'data-configuration',
+        component: DataConfigurationComponent
       }
     ]
   },
