@@ -4,13 +4,21 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import {CommonModule} from "@angular/common";
+import {ModalModule} from "ngx-bootstrap";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
+    CommonModule,
+    ModalModule.forRoot(),
     DashboardRoutingModule,
     ChartsModule,
-    BsDropdownModule
+    BsDropdownModule,
+    FormsModule
   ],
-  declarations: [ DashboardComponent ]
+  declarations: [
+    DashboardComponent
+  ]
 })
 export class DashboardModule { }

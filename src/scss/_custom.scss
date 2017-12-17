@@ -1,1 +1,104 @@
 // Here you can add other styles
+
+
+.app-header.navbar {
+  .navbar-toggler {
+    display: inline-block !important;
+    height: 100% !important;
+    background: #192532;
+
+    -webkit-box-shadow: inset -1px 0 2px 0 rgba(0,0,0,0.4), inset -2px 0 5px 0 rgba(0,0,0,0.35);
+    box-shadow: inset -1px 0 2px 0 rgba(0,0,0,0.4), inset -2px 0 5px 0 rgba(0,0,0,0.35);
+  }
+
+  .navbar-nav {
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 100%;
+    background: #192532;
+    -webkit-box-shadow: inset 1px 0 2px 0 rgba(0,0,0,0.9), inset 2px 0 5px 0 rgba(0,0,0,0.75);
+    box-shadow: inset 1px 0 2px 0 rgba(0,0,0,0.9), inset 2px 0 5px 0 rgba(0,0,0,0.75);
+
+    &.links {
+      box-shadow: none;
+      background: transparent;
+
+      .nav-link {
+        color: #fff;
+
+        &:hover {
+          color: #d5d5d5;
+        }
+      }
+    }
+  }
+
+  .navbar-toggler-icon {
+    float: left;
+    height: 40px;
+    margin-left: 20px;
+  }
+
+  .project-name {
+    display: inline-block;
+    float: left;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    span {
+      display: block;
+      text-align: left;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    span:first-child {
+      margin-top: 6px;
+    }
+
+    span:nth-child(2) {
+      margin-top: 3px;
+      color: #808080;
+      font-size: 12px;
+    }
+  }
+
+  .dropdown-item {
+    cursor: pointer;
+  }
+}
+
+
+.aside-menu {
+  text-align: center;
+
+  .callout {
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:not(:first-child) {
+      border-top: 1px solid;
+    }
+
+    &.active {
+      border-color: #70d66a;
+    }
+  }
+
+  .add-website {
+    display: inline-block;
+    width: 70%;
+    margin-top: 10px;
+  }
+}
+
+.aside-menu-fixed {
+  box-shadow: 2px 1px 4px 0px #d7d7d7;
+}
+
+.error-message {
+  color: #ef0000;
+  margin-bottom: 5px;
+}

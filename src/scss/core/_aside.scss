@@ -3,7 +3,9 @@
   width: $aside-menu-width;
   color: $aside-menu-color;
   background: $aside-menu-bg;
-  @include borders($aside-menu-borders);
+  //@include borders($aside-menu-borders);
+
+  border-right: 1px solid #CCC;
 
   .nav-tabs {
     border-color: $border-color;

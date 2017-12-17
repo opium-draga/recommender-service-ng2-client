@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {RequestService} from "./request";
-import {EmitterService} from "./emitter.service";
+import {Emitter} from "./emitter.service";
 import {Router} from "@angular/router";
 import {APIResponse} from "../models/response";
 
 @Injectable()
 export class UserService {
 
-  user: any;
+  private user: any;
 
   constructor(private request: RequestService) {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -56,7 +56,15 @@ export class UserService {
     return this.user.logged;
   }
 
+  getModel() {
+    return this.isLogged() ? this.user.model : undefined;
+  }
+
+  getUserId() {
+    return this.isLogged() ? this.user.model._id : undefined;
+  }
+
   private setToken(token: string) {
-    EmitterService.get(EmitterService.keys.TOKEN).emit(token);
+    Emitter.get(Emitter.keys.TOKEN).emit(token);
   }
 }

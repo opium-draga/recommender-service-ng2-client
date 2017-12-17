@@ -6,7 +6,7 @@ export const navigation = [
     badge: {
       variant: 'info'
     }
-  },
+  }
   // {
   //   name: 'Components',
   //   url: '/components',

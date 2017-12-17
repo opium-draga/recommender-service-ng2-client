@@ -62,7 +62,8 @@ const APP_DIRECTIVES = [
 const APP_SERVICES = [
   UserService,
   AuthGuardService,
-  RequestService
+  RequestService,
+  ProjectService
 ];
 
 // Import routing module
@@ -77,6 +78,9 @@ import {AuthGuardService} from "./services/auth-guard.service";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RequestService} from "./services/request";
+import {ProjectService} from "./services/project.service";
+import {NewProjectComponent} from "./components/new-project/new-project.component";
+import {ModalModule} from "ngx-bootstrap";
 
 @NgModule({
   imports: [
@@ -85,6 +89,7 @@ import {RequestService} from "./services/request";
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    ModalModule.forRoot(),
     ChartsModule,
     FormsModule
   ],
@@ -92,8 +97,11 @@ import {RequestService} from "./services/request";
     AppComponent,
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
-    ...APP_DIRECTIVES
+    ...APP_DIRECTIVES,
+    NewProjectComponent
   ],
+  exports: [NewProjectComponent],
+  entryComponents: [NewProjectComponent],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy

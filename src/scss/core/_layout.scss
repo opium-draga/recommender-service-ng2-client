@@ -165,14 +165,14 @@ app-root {
 //
 .aside-menu-hidden {
   .aside-menu {
-    margin-right: - $aside-menu-width;
+    margin-left: - $aside-menu-width;
   }
 }
 
 .aside-menu-fixed {
   .aside-menu {
     position: fixed;
-    right: 0;
+    left: 0;
     height: 100%;
 
     .tab-content {
@@ -181,7 +181,7 @@ app-root {
   }
 
   .main, .app-footer {
-    margin-right: $aside-menu-width;
+    margin-left: $aside-menu-width;
   }
 
   &.aside-menu-hidden {

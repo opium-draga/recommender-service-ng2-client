@@ -6,10 +6,12 @@ import {Injectable, EventEmitter} from '@angular/core';
  * Credit to https://gist.github.com/sasxa
  */
 @Injectable()
-export class EmitterService {
+export class Emitter {
 
 	static keys = {
-		TOKEN: "TOKEN"
+		TOKEN: "TOKEN",
+
+		PROJECTS_INITED: "PROJECTS_INITED"
 	};
 
 	/**

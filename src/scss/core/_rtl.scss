@@ -89,30 +89,30 @@
   //
   // Aside Menu
   //
-  .aside-menu-hidden {
-    .aside-menu {
-      margin-right: 0;
-      margin-left: - $aside-menu-width;
-    }
-  }
-
-  .aside-menu-fixed {
-    .aside-menu {
-      right: auto;
-      left: 0;
-    }
-
-    .main, .app-footer {
-      //margin-right: 0;
-      margin-left: $aside-menu-width;
-    }
-
-    &.aside-menu-hidden {
-      .main, .app-footer {
-        margin-left: 0;
-      }
-    }
-  }
+  //.aside-menu-hidden {
+  //  .aside-menu {
+  //    margin-right: 0;
+  //    margin-left: - $aside-menu-width;
+  //  }
+  //}
+  //
+  //.aside-menu-fixed {
+  //  .aside-menu {
+  //    right: auto;
+  //    left: 0;
+  //  }
+  //
+  //  .main, .app-footer {
+  //    //margin-right: 0;
+  //    margin-left: $aside-menu-width;
+  //  }
+  //
+  //  &.aside-menu-hidden {
+  //    .main, .app-footer {
+  //      margin-left: 0;
+  //    }
+  //  }
+  //}
 
   .aside-menu-off-canvas {
     .aside-menu {

@@ -14,6 +14,10 @@ export class APIResponse {
     return this.response.data;
   }
 
+  setData(data: any[]) {
+    this.response.data = data;
+  }
+
   getFirst() {
     return this.response.data[0];
   }
