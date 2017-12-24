@@ -84,6 +84,9 @@ import {NewProjectComponent} from "./components/new-project/new-project.componen
 import {ModalModule} from "ngx-bootstrap";
 import { DataConfigurationComponent } from './components/data-configuration/data-configuration.component';
 import {UploadService} from "./services/upload.service";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {MatProgressBarModule} from "@angular/material";
+import { ItemSetsComponent } from './components/data-configuration/components/item-sets/item-sets.component';
 
 @NgModule({
   imports: [
@@ -94,7 +97,9 @@ import {UploadService} from "./services/upload.service";
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     ChartsModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule,
+    MatProgressBarModule
   ],
   declarations: [
     AppComponent,
@@ -102,7 +107,8 @@ import {UploadService} from "./services/upload.service";
     ...APP_COMPONENTS,
     ...APP_DIRECTIVES,
     NewProjectComponent,
-    DataConfigurationComponent
+    DataConfigurationComponent,
+    ItemSetsComponent
   ],
   exports: [NewProjectComponent],
   entryComponents: [NewProjectComponent],

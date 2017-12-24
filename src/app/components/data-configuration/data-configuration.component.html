@@ -6,7 +6,7 @@
           <b>Data configuration</b>
         </div>
         <div class="card-body">
-          <tabset>
+          <tabset #staticTabs>
             <tab heading="Data import">
               <p><b>Step 1. Select CSV or Excel file to import</b></p>
 
@@ -32,6 +32,7 @@
                     <select [(ngModel)]="formData.fields[item]">
                       <option value="transaction_id">Unique action ID</option>
                       <option value="name">Item name/description</option>
+                      <option value="metadata">Meta field</option>
                       <option value="redundant">Redundant column</option>
                     </select>
                   </td>
@@ -39,33 +40,22 @@
                 </tbody>
               </table>
 
-              <!--<p><b>Step 3. Define name for future Item Sets</b></p>-->
-              <!--<div class="row" *ngIf="dataColumns">-->
-                <!--<div class="col-sm-3">-->
-                  <!--<div class="form-group">-->
-                    <!--<input class="form-control" placeholder="Enter data set name" type="text"-->
-                           <!--[(ngModel)]="formData.name">-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
+              <mat-progress-bar style="margin-bottom: 20px;"
+                  *ngIf="loading"
+                  [color]="'primary'"
+                  [mode]="'indeterminate'">
+              </mat-progress-bar>
 
-              <button class="btn" [disabled]="!file" (click)="importData()">
+              <button class="btn" (click)="importData()">
                 Import data
               </button>
             </tab>
 
-            <tab heading="Existing Item sets">
-              <!--<tab (select)="alertMe()">-->
-              <!--<ng-template tabHeading>-->
-              <!--<span class="badge badge-secondary">Click here!</span>-->
-              <!--</ng-template>-->
-              <!--I've got an HTML heading, and a select callback. Pretty cool!-->
-              <!--</tab>-->
+            <tab heading="Existing Item sets" (select)="itemSets.loadItemSets(reloadItemSets)">
+              <item-sets #itemSets="itemSets"></item-sets>
             </tab>
 
-
           </tabset>
-
         </div>
       </div>
     </div>

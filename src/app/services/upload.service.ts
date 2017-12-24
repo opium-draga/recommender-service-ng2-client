@@ -24,8 +24,7 @@ export class UploadService {
       params: params
     };
 
-    const url = API_ROOT + url;
-    const req = new HttpRequest('POST', url, formData, options);
+    const req = new HttpRequest('POST', API_ROOT + url, formData, options);
     return this.http.request(req);
   }
 }

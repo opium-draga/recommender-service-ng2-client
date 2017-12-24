@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UploadService} from "../../services/upload.service";
-import {HttpEventType, HttpResponse} from "@angular/common/http";
+import {HttpResponse} from "@angular/common/http";
 import {APIResponse} from "../../models/response";
 import {ProjectService} from "../../services/project.service";
+import * as _ from "lodash";
+import {TabsetComponent} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-data-configuration',
@@ -11,9 +13,14 @@ import {ProjectService} from "../../services/project.service";
 })
 export class DataConfigurationComponent implements OnInit {
 
+  @ViewChild('staticTabs') staticTabs: TabsetComponent;
+
   file: any;
   dataColumns: any;
   formData: any = {};
+  loading = false;
+  reloadItemSets = false;
+
 
   constructor(private uploadService: UploadService,
               private projectService: ProjectService) {
@@ -22,12 +29,16 @@ export class DataConfigurationComponent implements OnInit {
   ngOnInit() {
   }
 
+  selectTab(tab_id: number) {
+    this.staticTabs.tabs[tab_id].active = true;
+  }
+
   selectFile(event) {
     this.file = event.target.files;
     this.uploadFile(event.target.files, '/dataprocess/columns').subscribe(response => {
       if (response instanceof HttpResponse) {
-        response = new APIResponse(response.body);
-        this.dataColumns = response.getFirst().columns;
+        let apiResponse = new APIResponse(response.body);
+        this.dataColumns = apiResponse.getFirst().columns;
 
         this.formData.fields = {};
         this.dataColumns.forEach(columnName => {
@@ -51,9 +62,20 @@ export class DataConfigurationComponent implements OnInit {
   }
 
   importData() {
-    this.formData.fields = JSON.stringify(this.formData.fields);
-    this.uploadFile(this.file, '/dataprocess/import', this.formData).subscribe(response => {
-      debugger;
+    let formData = <any>_.cloneDeep(this.formData);
+    formData.fields = JSON.stringify(formData.fields);
+    this.loading = true;
+
+    this.uploadFile(this.file, '/dataprocess/import', formData).subscribe(response => {
+      if (response instanceof HttpResponse) {
+        this.loading = false;
+        this.reloadItemSets = true;
+        this.selectTab(1);
+
+        setTimeout(() => {
+          this.reloadItemSets = true;
+        });
+      }
     })
   }
 }
