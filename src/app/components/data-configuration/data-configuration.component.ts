@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {UploadService} from "../../services/upload.service";
-import {HttpResponse} from "@angular/common/http";
+import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {APIResponse} from "../../models/response";
 import {ProjectService} from "../../services/project.service";
 import * as _ from "lodash";
@@ -20,7 +20,7 @@ export class DataConfigurationComponent implements OnInit {
   formData: any = {};
   loading = false;
   reloadItemSets = false;
-
+  message = '';
 
   constructor(private uploadService: UploadService,
               private projectService: ProjectService) {
@@ -65,17 +65,23 @@ export class DataConfigurationComponent implements OnInit {
     let formData = <any>_.cloneDeep(this.formData);
     formData.fields = JSON.stringify(formData.fields);
     this.loading = true;
+    this.message = '';
 
     this.uploadFile(this.file, '/dataprocess/import', formData).subscribe(response => {
       if (response instanceof HttpResponse) {
-        this.loading = false;
-        this.reloadItemSets = true;
-        this.selectTab(1);
-
-        setTimeout(() => {
           this.reloadItemSets = true;
-        });
+          this.selectTab(1);
+          setTimeout(() => {
+            this.reloadItemSets = true;
+          });
       }
-    })
+
+      if (response instanceof HttpErrorResponse) {
+        let apiResponse = new APIResponse(response.error);
+        this.message = apiResponse.getError();
+      }
+
+      this.loading = false;
+    });
   }
 }

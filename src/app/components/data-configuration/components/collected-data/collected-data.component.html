@@ -1,0 +1,28 @@
+
+<div class="row">
+
+
+  <div class="col-md-12">
+
+    <mat-progress-bar style="margin-bottom: 20px;"
+                      *ngIf="loading"
+                      [color]="'primary'"
+                      [mode]="'indeterminate'">
+    </mat-progress-bar>
+
+    <table class="table table-sm" *ngIf="data">
+      <thead>
+      <!--<tr>-->
+        <!--<th *ngFor="let header of Object.keys(data[0])">{{header | json}}</th>-->
+      <!--</tr>-->
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let row of data">
+        <td>{{row | json}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

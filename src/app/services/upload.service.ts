@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpEvent, HttpParams, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {API_ROOT} from "../config";
+import {APIResponse, ResponseModel} from "../models/response";
 
 @Injectable()
 export class UploadService {
@@ -25,6 +26,11 @@ export class UploadService {
     };
 
     const req = new HttpRequest('POST', API_ROOT + url, formData, options);
-    return this.http.request(req);
+    return this.http.request(req)
+      // .map((response: ResponseModel) => new APIResponse(response))
+      .catch(response =>
+      {
+        return Observable.of(response)
+      });
   }
 }

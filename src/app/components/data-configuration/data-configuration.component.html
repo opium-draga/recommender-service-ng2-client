@@ -46,9 +46,17 @@
                   [mode]="'indeterminate'">
               </mat-progress-bar>
 
-              <button class="btn" (click)="importData()">
+              <p *ngIf="message" style="color: red">
+                {{message}}
+              </p>
+
+              <button class="btn" [disabled]="!file" (click)="importData()">
                 Import data
               </button>
+            </tab>
+
+            <tab heading="Collected data" (select)="collected.loadCollectedData()">
+              <collected-data #collected="collected"></collected-data>
             </tab>
 
             <tab heading="Existing Item sets" (select)="itemSets.loadItemSets(reloadItemSets)">
