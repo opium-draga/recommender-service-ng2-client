@@ -88,6 +88,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {MatProgressBarModule} from "@angular/material";
 import { ItemSetsComponent } from './components/data-configuration/components/item-sets/item-sets.component';
 import { CollectedDataComponent } from './components/data-configuration/components/collected-data/collected-data.component';
+import { ApiComponent } from './components/api/api.component';
 
 @NgModule({
   imports: [
@@ -110,7 +111,8 @@ import { CollectedDataComponent } from './components/data-configuration/componen
     NewProjectComponent,
     DataConfigurationComponent,
     ItemSetsComponent,
-    CollectedDataComponent
+    CollectedDataComponent,
+    ApiComponent
   ],
   exports: [NewProjectComponent],
   entryComponents: [NewProjectComponent],

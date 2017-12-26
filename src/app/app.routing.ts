@@ -8,6 +8,7 @@ import {
 } from './containers';
 import {AuthGuardService} from "./services/auth-guard.service";
 import {DataConfigurationComponent} from "./components/data-configuration/data-configuration.component";
+import {ApiComponent} from "./components/api/api.component";
 
 export const routes: Routes = [
   {
@@ -27,6 +28,10 @@ export const routes: Routes = [
       {
         path: 'data-configuration',
         component: DataConfigurationComponent
+      },
+      {
+        path: 'api',
+        component: ApiComponent
       }
     ]
   },
