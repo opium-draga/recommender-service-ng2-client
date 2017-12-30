@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h4 class="modal-title">Create a new Token</h4>
+  <button type="button" class="close" (click)="bsModalRef.hide()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-sm-12">
+      <p>Provide each platform with separated token</p>
+    </div>
+  </div>
+
+  <form #newProjectForm="ngForm">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="name">Enter here you Token name</label>
+          <input [(ngModel)]="tokenName" name="projectName"
+                 required class="form-control" id="name" placeholder="Project name" type="text">
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <p *ngIf="error" class="error-message">{{error}}</p>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Close</button>
+  <button type="button" class="btn btn-primary"
+          [disabled]="!newProjectForm.form.valid"
+          (click)="createToken()">Create token</button>
+</div>
+
+

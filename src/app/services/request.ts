@@ -31,7 +31,9 @@ export class RequestService {
       .catch(response => Observable.of(new APIResponse(response.error)));
   }
 
-  delete() {
-
+  delete(entity: string, id) {
+    return this.http.delete(`${API_ROOT}/${entity}/${id}`, {headers: this.headers})
+      .map((response: ResponseModel) => new APIResponse(response))
+      .catch(response => Observable.of(new APIResponse(response.error)));
   }
 }

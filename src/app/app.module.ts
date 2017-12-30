@@ -89,6 +89,7 @@ import {MatProgressBarModule} from "@angular/material";
 import { ItemSetsComponent } from './components/data-configuration/components/item-sets/item-sets.component';
 import { CollectedDataComponent } from './components/data-configuration/components/collected-data/collected-data.component';
 import { ApiComponent } from './components/api/api.component';
+import { NewTokenComponent } from './components/new-token/new-token.component';
 
 @NgModule({
   imports: [
@@ -112,10 +113,16 @@ import { ApiComponent } from './components/api/api.component';
     DataConfigurationComponent,
     ItemSetsComponent,
     CollectedDataComponent,
-    ApiComponent
+    ApiComponent,
+    NewTokenComponent
   ],
-  exports: [NewProjectComponent],
-  entryComponents: [NewProjectComponent],
+  exports: [
+    NewProjectComponent,
+    NewTokenComponent],
+  entryComponents: [
+    NewProjectComponent,
+    NewTokenComponent
+  ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy

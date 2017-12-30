@@ -6,9 +6,53 @@
           <b>API</b>
         </div>
         <div class="card-body">
-          tets
+
+          <mat-progress-bar style="margin-bottom: 20px;"
+                            *ngIf="loading"
+                            [color]="'primary'"
+                            [mode]="'indeterminate'">
+          </mat-progress-bar>
+
+          <p *ngIf="tokens && !tokens.length">
+            <b>You don't have any tokens, try to create ones for you platforms</b>
+          </p>
+
+          <button class="btn btn-sm btn-success" (click)="createToken()">Create new token</button>
+
+          <table class="table table-striped mt-4" *ngIf="tokens && tokens.length">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Token</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let token of tokens">
+              <td>{{token.name}}</td>
+              <td style="width: 70%">
+                <textarea style="width: 100%;resize: none;background: #dfdfdf;" readonly rows="3" class="break-line" value="{{token.token}}">
+                </textarea>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-danger" (click)="removeToken(token._id, confirmRemoveTemplate)">
+                  Remove
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #confirmRemoveTemplate>
+  <div class="modal-body text-center">
+    <p>After deleting your application wont use this token, do you really want to remove one?</p>
+    <button type="button" class="btn btn-default" (click)="confirmRemove()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="modalRef.hide()" >No</button>
+  </div>
+</ng-template>
